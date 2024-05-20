@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+</head>
+<body>
+    <h1>Image Processing</h1>
+    <form action="/process_image" method="POST" enctype="multipart/form-data">
+        <input type="file" name="img_file" accept="image/*">
+        <button type="submit">Process Image</button>
+        <input type="submit" value="Upload">
+    </form>
+    <h2>Color Chart</h2>
+    <img src="{{ url_for('static', filename=chart_image) }}" alt="Color Chart">
+    <script>
+        const form = document.querySelector('form');
+        const resultDiv = document.querySelector('#result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/process_image', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            resultDiv.innerHTML = 'Image processed successfully!';
+        });
+    </script>
+</body>
+</html>

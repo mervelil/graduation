@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Images</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      body {
+  margin: 0;
+  background: #160c36;
+  text-align: center;
+  font-family: sans-serif;
+  color: #fefefe;
+}
+
+.container {
+  position: relative;
+  width: 320px;
+  margin: 100px auto 0 auto;
+  perspective: 1000px;
+}
+
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate360 60s infinite forwards linear;
+}
+
+.image {
+  position: absolute;
+  height: 200px;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+span {
+  margin: auto;
+  font-size: 2rem;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+.image:nth-child(1) {
+  background-image: url("image_1.jpg");
+  transform: rotateY(0deg) translateZ(450px);
+}
+.image:nth-child(2) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(40deg) translateZ(450px);
+}
+.image:nth-child(3) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(80deg) translateZ(450px);
+}
+.image:nth-child(4) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(120deg) translateZ(450px);
+}
+.image:nth-child(5) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(160deg) translateZ(450px);
+}
+.image:nth-child(6) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(200deg) translateZ(450px);
+}
+.image:nth-child(7) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(240deg) translateZ(450px);
+}
+.image:nth-child(8) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(280deg) translateZ(450px);
+}
+.image:nth-child(9) {
+  background-image: url(https://i.pinimg.com/originals/5e/4c/65/5e4c655b9353e0be289273b3e7c4b227.jpg);
+  transform: rotateY(320deg) translateZ(450px);
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/index2">Dominant Color</a>
+        <a href="/search">Search</a>
+        <a href="/category">Info</a>
+      </nav>
+    <div class="container">
+        <div class="carousel">
+            <div class="image">One</div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+        </div>
+    </div>
+</body>
+</html>

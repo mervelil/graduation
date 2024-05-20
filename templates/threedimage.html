@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+    <style>
+        * {
+  outline: 0 solid #fff;
+}
+
+:root {
+  --size: 360px;
+}
+
+body {
+  background-color: rgba(156, 155, 155, 0.4);
+  padding: 0;
+  margin: 0;
+}
+
+.perspective {
+  perspective: 1000px;
+  perspective-origin: center;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.content-div {
+  transform-origin: center;
+  transform-style: preserve-3d;
+  z-index: 10;
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-family: "sans serif";
+  color: #fff;
+  text-shadow: 0px 0px 10px #ec8989;
+  pointer-events: none;
+}
+
+.img-cylinder {
+  position: absolute;
+  animation: animate 30s linear infinite;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  translate: 0 -100%;
+}
+#buttons {
+  background-color: rgba(255, 255, 255, 0.119);
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* Dikey yerine yatay düzlem için */
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn {
+  text-decoration: none; 
+  flex-wrap: wrap;
+  gap: 10px;
+  display: flex;
+  padding: 5px;
+  border-radius: 50px;
+  font-weight: 100;
+  text-align: center;
+  margin: 20px;
+  width: 100px;
+  transition: all .3s ease;
+}
+
+.btn-solid {
+  background-image: linear-gradient(130deg, #fc00ff 0%, #00dbde 100%);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color: white;
+  font-weight: 100;
+}
+
+.image {
+  position: absolute;
+  left: 50%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  translate: -50%;
+  --deg: 18;
+  transform: rotateY(calc(var(--i) * calc(var(--deg) * 1deg))) translateY(calc(calc(var(--i) / calc(1.11 * var(--deg))) * calc(var(--deg) * 5.83%))) translateZ(calc(var(--size) * -3.3));
+  transition: all 0.2s ease;
+  width: var(--size);
+  height: var(--size);
+  background-image: var(--url);
+  background-size: cover;
+  background-attachment: fixed;
+  backface-visibility: hidden;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes deg {
+  0% {
+    transform: rotateY(calc(var(--i) * calc(28 * 1deg))) translateY(calc(calc(var(--i) / calc(1.11 * 28)) * calc(28 * 5.83%))) translateZ(calc(var(--size) * -3.3));
+  }
+  100% {
+    transform: rotateY(calc(var(--i) * calc(18 * 1deg))) translateY(calc(calc(var(--i) / calc(1.11 * 18)) * calc(18 * 5.83%))) translateZ(calc(var(--size) * -3.3));
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="buttons">
+        <a href="/index2" class="btn btn-solid effect-scale">Main</a>
+        <a href="/deneme" class="btn btn-solid effect-scale">Pinterest</a>
+        <a href="/search" class="btn  btn-solid effect-scale">Search net</span> </a>
+        <a href="/three" class="btn  btn-solid effect-scale">Layer</a>
+    </div>
+    
+    <div class="perspective">
+      
+        <div class="content-div">
+            
+          <h5 style="text-align: center;">Welcome to Dominant Color Detection Web</h5>
+        </div>
+      <div class="img-cylinder">
+        <!-- .image[style="--i:$;--url:url('https://picsum.photos/200?v=$');"]*200 -->
+       
+    
+        <div class="image" style="--i:1;--url:url('https://picsum.photos/200?v=1');"></div>
+        <div class="image" style="--i:2;--url:url('https://picsum.photos/200?v=2');"></div>
+        <div class="image" style="--i:3;--url:url('https://picsum.photos/200?v=3');"></div>
+        <div class="image" style="--i:4;--url:url('https://picsum.photos/200?v=4');"></div>
+        <div class="image" style="--i:5;--url:url('https://picsum.photos/200?v=5');"></div>
+        <div class="image" style="--i:6;--url:url('https://picsum.photos/200?v=6');"></div>
+        <div class="image" style="--i:7;--url:url('https://picsum.photos/200?v=7');"></div>
+        <div class="image" style="--i:8;--url:url('https://picsum.photos/200?v=8');"></div>
+        <div class="image" style="--i:9;--url:url('https://picsum.photos/200?v=9');"></div>
+        <div class="image" style="--i:10;--url:url('https://picsum.photos/200?v=10');"></div>
+        <div class="image" style="--i:11;--url:url('https://picsum.photos/200?v=11');"></div>
+        <div class="image" style="--i:12;--url:url('https://picsum.photos/200?v=12');"></div>
+        <div class="image" style="--i:13;--url:url('https://picsum.photos/200?v=13');"></div>
+        <div class="image" style="--i:14;--url:url('https://picsum.photos/200?v=14');"></div>
+        <div class="image" style="--i:15;--url:url('https://picsum.photos/200?v=15');"></div>
+        <div class="image" style="--i:16;--url:url('https://picsum.photos/200?v=16');"></div>
+        <div class="image" style="--i:17;--url:url('https://picsum.photos/200?v=17');"></div>
+        <div class="image" style="--i:18;--url:url('https://picsum.photos/200?v=18');"></div>
+        <div class="image" style="--i:19;--url:url('https://picsum.photos/200?v=19');"></div>
+        <div class="image" style="--i:20;--url:url('https://picsum.photos/200?v=20');"></div>
+        <div class="image" style="--i:21;--url:url('https://picsum.photos/200?v=21');"></div>
+        <div class="image" style="--i:22;--url:url('https://picsum.photos/200?v=22');"></div>
+        <div class="image" style="--i:23;--url:url('https://picsum.photos/200?v=23');"></div>
+        <div class="image" style="--i:24;--url:url('https://picsum.photos/200?v=24');"></div>
+        <div class="image" style="--i:25;--url:url('https://picsum.photos/200?v=25');"></div>
+        <div class="image" style="--i:26;--url:url('https://picsum.photos/200?v=26');"></div>
+        <div class="image" style="--i:27;--url:url('https://picsum.photos/200?v=27');"></div>
+        <div class="image" style="--i:28;--url:url('https://picsum.photos/200?v=28');"></div>
+        <div class="image" style="--i:29;--url:url('https://picsum.photos/200?v=29');"></div>
+        <div class="image" style="--i:30;--url:url('https://picsum.photos/200?v=30');"></div>
+        <div class="image" style="--i:31;--url:url('https://picsum.photos/200?v=31');"></div>
+        <div class="image" style="--i:32;--url:url('https://picsum.photos/200?v=32');"></div>
+        <div class="image" style="--i:33;--url:url('https://picsum.photos/200?v=33');"></div>
+        <div class="image" style="--i:34;--url:url('https://picsum.photos/200?v=34');"></div>
+        <div class="image" style="--i:35;--url:url('https://picsum.photos/200?v=35');"></div>
+        <div class="image" style="--i:36;--url:url('https://picsum.photos/200?v=36');"></div>
+        <div class="image" style="--i:37;--url:url('https://picsum.photos/200?v=37');"></div>
+        <div class="image" style="--i:38;--url:url('https://picsum.photos/200?v=38');"></div>
+        <div class="image" style="--i:39;--url:url('https://picsum.photos/200?v=39');"></div>
+        <div class="image" style="--i:40;--url:url('https://picsum.photos/200?v=40');"></div>
+        <div class="image" style="--i:41;--url:url('https://picsum.photos/200?v=41');"></div>
+        <div class="image" style="--i:42;--url:url('https://picsum.photos/200?v=42');"></div>
+        <div class="image" style="--i:43;--url:url('https://picsum.photos/200?v=43');"></div>
+        <div class="image" style="--i:44;--url:url('https://picsum.photos/200?v=44');"></div>
+        <div class="image" style="--i:45;--url:url('https://picsum.photos/200?v=45');"></div>
+        <div class="image" style="--i:46;--url:url('https://picsum.photos/200?v=46');"></div>
+        <div class="image" style="--i:47;--url:url('https://picsum.photos/200?v=47');"></div>
+        <div class="image" style="--i:48;--url:url('https://picsum.photos/200?v=48');"></div>
+        <div class="image" style="--i:49;--url:url('https://picsum.photos/200?v=49');"></div>
+        <div class="image" style="--i:50;--url:url('https://picsum.photos/200?v=50');"></div>
+        <div class="image" style="--i:51;--url:url('https://picsum.photos/200?v=51');"></div>
+        <div class="image" style="--i:52;--url:url('https://picsum.photos/200?v=52');"></div>
+        <div class="image" style="--i:53;--url:url('https://picsum.photos/200?v=53');"></div>
+        <div class="image" style="--i:54;--url:url('https://picsum.photos/200?v=54');"></div>
+        <div class="image" style="--i:55;--url:url('https://picsum.photos/200?v=55');"></div>
+        <div class="image" style="--i:56;--url:url('https://picsum.photos/200?v=56');"></div>
+        <div class="image" style="--i:57;--url:url('https://picsum.photos/200?v=57');"></div>
+        <div class="image" style="--i:58;--url:url('https://picsum.photos/200?v=58');"></div>
+        <div class="image" style="--i:59;--url:url('https://picsum.photos/200?v=59');"></div>
+        <div class="image" style="--i:60;--url:url('https://picsum.photos/200?v=60');"></div>
+        <div class="image" style="--i:61;--url:url('https://picsum.photos/200?v=61');"></div>
+        <div class="image" style="--i:62;--url:url('https://picsum.photos/200?v=62');"></div>
+        <div class="image" style="--i:63;--url:url('https://picsum.photos/200?v=63');"></div>
+        <div class="image" style="--i:64;--url:url('https://picsum.photos/200?v=64');"></div>
+        <div class="image" style="--i:65;--url:url('https://picsum.photos/200?v=65');"></div>
+        <div class="image" style="--i:66;--url:url('https://picsum.photos/200?v=66');"></div>
+        <div class="image" style="--i:67;--url:url('https://picsum.photos/200?v=67');"></div>
+        <div class="image" style="--i:68;--url:url('https://picsum.photos/200?v=68');"></div>
+        <div class="image" style="--i:69;--url:url('https://picsum.photos/200?v=69');"></div>
+        <div class="image" style="--i:70;--url:url('https://picsum.photos/200?v=70');"></div>
+        <div class="image" style="--i:71;--url:url('https://picsum.photos/200?v=71');"></div>
+        <div class="image" style="--i:72;--url:url('https://picsum.photos/200?v=72');"></div>
+        <div class="image" style="--i:73;--url:url('https://picsum.photos/200?v=73');"></div>
+        <div class="image" style="--i:74;--url:url('https://picsum.photos/200?v=74');"></div>
+        <div class="image" style="--i:75;--url:url('https://picsum.photos/200?v=75');"></div>
+        <div class="image" style="--i:76;--url:url('https://picsum.photos/200?v=76');"></div>
+        <div class="image" style="--i:77;--url:url('https://picsum.photos/200?v=77');"></div>
+        <div class="image" style="--i:78;--url:url('https://picsum.photos/200?v=78');"></div>
+        <div class="image" style="--i:79;--url:url('https://picsum.photos/200?v=79');"></div>
+        <div class="image" style="--i:80;--url:url('https://picsum.photos/200?v=80');"></div>
+        <div class="image" style="--i:81;--url:url('https://picsum.photos/200?v=81');"></div>
+        <div class="image" style="--i:82;--url:url('https://picsum.photos/200?v=82');"></div>
+        <div class="image" style="--i:83;--url:url('https://picsum.photos/200?v=83');"></div>
+        <div class="image" style="--i:84;--url:url('https://picsum.photos/200?v=84');"></div>
+        <div class="image" style="--i:85;--url:url('https://picsum.photos/200?v=85');"></div>
+        <div class="image" style="--i:86;--url:url('https://picsum.photos/200?v=86');"></div>
+        <div class="image" style="--i:87;--url:url('https://picsum.photos/200?v=87');"></div>
+        <div class="image" style="--i:88;--url:url('https://picsum.photos/200?v=88');"></div>
+        <div class="image" style="--i:89;--url:url('https://picsum.photos/200?v=89');"></div>
+        <div class="image" style="--i:90;--url:url('https://picsum.photos/200?v=90');"></div>
+        <div class="image" style="--i:91;--url:url('https://picsum.photos/200?v=91');"></div>
+        <div class="image" style="--i:92;--url:url('https://picsum.photos/200?v=92');"></div>
+        <div class="image" style="--i:93;--url:url('https://picsum.photos/200?v=93');"></div>
+        <div class="image" style="--i:94;--url:url('https://picsum.photos/200?v=94');"></div>
+        <div class="image" style="--i:95;--url:url('https://picsum.photos/200?v=95');"></div>
+        <div class="image" style="--i:96;--url:url('https://picsum.photos/200?v=96');"></div>
+        <div class="image" style="--i:97;--url:url('https://picsum.photos/200?v=97');"></div>
+        <div class="image" style="--i:98;--url:url('https://picsum.photos/200?v=98');"></div>
+        <div class="image" style="--i:99;--url:url('https://picsum.photos/200?v=99');"></div>
+        <div class="image" style="--i:100;--url:url('https://picsum.photos/200?v=100');"></div>
+        <div class="image" style="--i:101;--url:url('https://picsum.photos/200?v=101');"></div>
+        <div class="image" style="--i:102;--url:url('https://picsum.photos/200?v=102');"></div>
+        <div class="image" style="--i:103;--url:url('https://picsum.photos/200?v=103');"></div>
+        <div class="image" style="--i:104;--url:url('https://picsum.photos/200?v=104');"></div>
+        <div class="image" style="--i:105;--url:url('https://picsum.photos/200?v=105');"></div>
+        <div class="image" style="--i:106;--url:url('https://picsum.photos/200?v=106');"></div>
+        <div class="image" style="--i:107;--url:url('https://picsum.photos/200?v=107');"></div>
+        <div class="image" style="--i:108;--url:url('https://picsum.photos/200?v=108');"></div>
+        <div class="image" style="--i:109;--url:url('https://picsum.photos/200?v=109');"></div>
+        <div class="image" style="--i:110;--url:url('https://picsum.photos/200?v=110');"></div>
+        <div class="image" style="--i:111;--url:url('https://picsum.photos/200?v=111');"></div>
+        <div class="image" style="--i:112;--url:url('https://picsum.photos/200?v=112');"></div>
+        <div class="image" style="--i:113;--url:url('https://picsum.photos/200?v=113');"></div>
+        <div class="image" style="--i:114;--url:url('https://picsum.photos/200?v=114');"></div>
+        <div class="image" style="--i:115;--url:url('https://picsum.photos/200?v=115');"></div>
+        <div class="image" style="--i:116;--url:url('https://picsum.photos/200?v=116');"></div>
+        <div class="image" style="--i:117;--url:url('https://picsum.photos/200?v=117');"></div>
+        <div class="image" style="--i:118;--url:url('https://picsum.photos/200?v=118');"></div>
+        <div class="image" style="--i:119;--url:url('https://picsum.photos/200?v=119');"></div>
+        <div class="image" style="--i:120;--url:url('https://picsum.photos/200?v=120');"></div>
+        
+      </div>
+        </div>
+      
+</body>
+</html>

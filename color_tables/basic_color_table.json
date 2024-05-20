@@ -1,0 +1,18 @@
+{
+    "#000000": "black",
+    "#FFFFFF": "white",
+    "#FF0000": "red",
+    "#00FF00": "lime",
+    "#0000FF": "blue",
+    "#FFFF00": "yellow",
+    "#00FFFF": "aqua",
+    "#FF00FF": "magenta",
+    "#C0C0C0": "silver",
+    "#808080": "gray",
+    "#800000": "maroon",
+    "#808000": "olive",
+    "#008000": "green",
+    "#800080": "purple",
+    "#008080": "teal",
+    "#000080": "navy"
+}

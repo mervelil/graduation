@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosya Yükle</title>
+</head>
+<body>
+    <h1>Dosya Yükle</h1>
+    <form action="/uploadem" method="POST" enctype="multipart/form-data">
+        <input type="file" name="img_file" accept="image/*">
+        <input type="submit" value="Upload" onclick="upload()">
+        <button type="submit" value="Upload" onclick="upload()">UPLOAD</button>
+        <button></button>
+    </form>
+   
+    <h2>Color Chart</h2>
+    {% if chart_image %}
+    <img src="{{ chart_image}}" alt="Color Chart">
+     {% endif %}
+
+
+</body>
+</html>

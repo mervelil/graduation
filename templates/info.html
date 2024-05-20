@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+    <style>
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 100svh;
+    font-family: system-ui;
+    background-image: url(https://image.tmdb.org/t/p/original/lzWHmYdfeFiMIY4JaMmtR7GEli3.jpg);
+    background-size: cover;
+    background-position: center;
+
+    &::after {
+        position: fixed;
+        inset: 0;
+        background-color: #000000cc;
+        z-index: 1;
+        backdrop-filter: blur(10px); 
+        content: "";
+    }
+}
+
+.card-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.card {
+    width: 256px;
+    place-items: center;
+    z-index: 2;
+    aspect-ratio: 50/75;
+    isolation: isolate;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    &:hover {
+        & > .card-front {
+            transform: rotateY(180deg);
+        }
+
+        & > .card-back {
+            transform: rotateY(0deg);
+            opacity: 1;
+        }
+    }
+}
+.nav {
+    width: 256px;
+    place-items: center;
+    z-index: 2;
+    aspect-ratio: 50/75;
+    isolation: isolate;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    &:hover {
+        & > .card-front {
+            transform: rotateY(180deg);
+        }
+
+        & > .card-back {
+            transform: rotateY(0deg);
+            opacity: 1;
+        }
+    }
+}
+
+.card-front,
+.card-back {
+    aspect-ratio: inherit;
+    transition: inherit;
+    width: 100%;
+    border-radius: 0.75rem;
+    inset: 0;
+    position: absolute;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.card-front {
+    z-index: 2;
+
+    & > img {
+        max-width: 100%;
+    }
+}
+
+.card-back {
+    background-color: #000000cc;
+    backface-visibility: hidden;
+    padding: 1.5rem;
+    z-index: 2;
+    transform: rotateY(-180deg);
+    backdrop-filter: blur(4px);
+    color: white;
+}
+
+#buttons {
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  border-radius: 50px;
+  font-weight: 900;
+  text-align: center;
+  margin: 30px;
+  width: 200px;
+  transition: all .3s ease;
+}
+
+.btn-solid {
+  background-image: linear-gradient(130deg, #fc00ff 0%, #00dbde 100%);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color: white;
+  font-weight: 900;
+}
+
+.effect-scale:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+    </style>
+    <script>
+    
+    </script>
+</head>
+<body> 
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-front">
+                <img src="https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dune part 1 movie poster">
+            </div>
+            <div class="card-back">
+                <h3>Dominant Color Detection for Online Fashion Retrievals</h3>
+                <p>Merve Çelik</p>
+                <br>
+                <p>
+                    Renk, moda öğelerinin çok önemli bir özelliğidir ve modanın geri getirilmesinde kritik bir rol oynar. Moda sitelerinde baskın renklerin  problemi, filtreleme de efektif sonuçlar verme ve kişiye özel ürün aramalarında efektif sonuçlar bulması problemidir. 
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dune part 2 movie poster">
+            </div>
+            <div class="card-back">
+                <h3>Dominant Color Detection for Online Fashion Retrievals</h3>
+                <p>Merve Çelik</p>
+                <br>
+                <p>
+                    Color is a very important feature of fashion items and plays a critical role in bringing fashion back. The problem of dominant colors on fashion sites is the problem of providing effective results in filtering and finding effective results in personalized product
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dune part 2 movie poster">
+            </div>
+            <div class="card-back">
+                <h3>Developer</h3>
+                <p>Merve Çelik</p>
+                <br>
+                <p>
+                   Senior Year Computer Engineering Student
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <div id="buttons">
+                    <a href="/index2" class="btn btn-solid effect-scale">Home</a>
+                    <a href="/deneme" class="btn btn-solid effect-scale">Unsplash </a>
+                    <a href="/search" class="btn  btn-solid effect-scale">Search Image</span> </a>
+                    <a href="/three" class="btn  btn-solid effect-scale">Starter</a>
+                </div>
+         
+            </div>
+   
+        </div>
+    
+    </div>
+ 
+</body>
+</html>

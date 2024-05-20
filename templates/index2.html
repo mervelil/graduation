@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dominant Color Detection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <link rel="stylesheet" href="static/css/index.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <style>
+.containers {
+  height: 270px;
+  position: relative;
+  max-width: 320px;
+  margin: auto;
+}
+
+.containers .imageWrapper {
+  border: 3px solid #888;
+  width: 70%;
+  padding-bottom: 70%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.containers .imageWrapper img {
+  height: 105%;
+  width: initial;
+  max-height: 100%;
+  max-width: initial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Logo</a>
+        <a href="/deneme">Image Generator Slide</a>
+        <a href="/search">Unsplash Image</a>
+        <a href="/info">About</a>
+      </nav>
+
+      
+   
+    <main>
+        <div id="loader">
+        <div class="tower">
+            <div class="tower__group">
+                <div class="tower__brick-layer tower__brick-layer--4">
+                    <div class="tower__brick tower__brick--0">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--90 tower__brick--red">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--180 tower__brick--orange">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--270 tower__brick--purple">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer--3">
+                    <div class="tower__brick tower__brick--45 tower__brick--magenta">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--135">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--225 tower__brick--green">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--315 tower__brick--orange">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer--2">
+                    <div class="tower__brick tower__brick--0 tower__brick--red">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--90 tower__brick--green">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--180 tower__brick--purple">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--270">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer--1">
+                    <div class="tower__brick tower__brick--45 tower__brick--purple">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--135 tower__brick--magenta">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--225 tower__brick--red">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--315 tower__brick--green">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer">
+                    <div class="tower__brick tower__brick--0 tower__brick--move14">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--90 tower__brick--red tower__brick--move13">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--180 tower__brick--orange tower__brick--move16">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--270 tower__brick--purple tower__brick--move15">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer---1">
+                    <div class="tower__brick tower__brick--45 tower__brick--move10 tower__brick--magenta">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--135 tower__brick--move9">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--225 tower__brick--green tower__brick--move12">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--315 tower__brick--orange tower__brick--move11">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer---2">
+                    <div class="tower__brick tower__brick--0 tower__brick--red tower__brick--move6">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--90 tower__brick--green tower__brick--move5">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--180 tower__brick--purple tower__brick--move8">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--270 tower__brick--move7">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+                <div class="tower__brick-layer tower__brick-layer---3">
+                    <div class="tower__brick tower__brick--45 tower__brick--purple tower__brick--move2">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--135 tower__brick--magenta tower__brick--move1">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--225 tower__brick--red tower__brick--move4">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                    <div class="tower__brick tower__brick--315 tower__brick--green tower__brick--move3">
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-side"></div>
+                        <div class="tower__brick-stud"></div>
+                        <div class="tower__brick-stud"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="message">
+            <p class="message__line">Loading…</p>
+            <p class="message__line">Sorting out the pieces…</p>
+            <p class="message__line">Assembling one brick at a time…</p>
+            <p class="message__line">Following every step…</p>
+            <p class="message__line">Being very careful not to step on the pieces…</p>
+            <p class="message__line">Trying not to get finger blisters…</p>
+            <p class="message__line">Might take longer to build than the Death Star…</p>
+            <p class="message__line">Wrapping it up…</p>
+        </div>
+    </div>
+    </main>
+
+    <h1>Upload an image to detect dominant color</h1>
+     <form action="/index2" method="POST" enctype="multipart/form-data">
+        <input id="cloud" type="file" class="file-input" name="img_file" accept="image/*" >
+        <input id="submit" type="submit"  value="Submit" onclick="upload()">
+        <div class="containers">
+            <div class="imageWrapper">
+                <img class="image" src="{{ uploaded_image or 'http://via.placeholder.com/700x500' }}">
+            </div>
+            </div>
+          </div>
+        <!-- <button type="submit" value="Upload" onclick="upload()">UPLOAD</button> -->
+    </form> 
+    <br>
+    <h2>Color Chart</h2>
+    {% if chart_image %}
+    <img src="{{ chart_image}}" alt="Color Chart">
+     {% endif %}
+        <div class="card">
+            <div class="card-content">
+                <div class="card-front">
+                    <h3 class="card-title">Detection</h3>
+                    <p class="card-subtitle">Hover to find out more</p>
+                </div>
+                <div class="card-back">
+                    <p class="card-body">Extract Dominant Color
+                        <br>
+                        <button class="btn"> <a href="/index2">Extract</a></button> 
+                    </p>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-front">
+                    <h3 class="card-title">Pinterest</h3>
+                    <p class="card-subtitle">Hover to find out more</p>
+                </div>
+                <div class="card-back">
+                    <p class="card-body">Find similar image from pinterest
+                        <button class="btn"><a href="/search">Find</a></button>     
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-front">
+                    <h3 class="card-title">Image generator</h3>
+                    <p class="card-subtitle">Hover to find out more</p>
+                </div>
+                <div class="card-back">
+                    <p class="card-body">Generate images based on dominant color
+                        <button class="btn"><a href="/deneme">Generate</a></button> 
+                    </p>
+                   
+                        
+                    
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            let navigation = document.querySelector('.navigation');
+            let toggle = document.querySelector('.toggle');
+            toggle.onclick = function(){
+                navigation.classList.toggle('active')
+            }
+        </script>
+    
+        <!--ICONS JS CODE-->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- Optional JavaScript; choose one of the two! -->
+    
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+   
+</html>
